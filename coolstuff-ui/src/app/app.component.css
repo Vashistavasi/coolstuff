@@ -1,0 +1,16 @@
+nav {
+  background-color: #007acc;
+  padding: 1rem;
+}
+.nav-link {
+  color: white;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+.nav-link.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.container {
+  padding: 1rem;
+}

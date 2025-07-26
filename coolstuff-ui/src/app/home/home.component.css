@@ -1,0 +1,10 @@
+.article-item {
+  background-color: white;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.article-item h3 {
+  margin-top: 0;
+}
