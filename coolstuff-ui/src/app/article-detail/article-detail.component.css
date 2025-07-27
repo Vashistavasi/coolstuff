@@ -1,0 +1,136 @@
+/* Prevent page overflow and center content */
+.article-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+.article-main markdown img,
+.article-main .markdown img,
+.article-main img {
+  max-width: 100%;
+  max-height: 400px;
+  height: auto;
+  display: block;
+  margin: 18px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  object-fit: cover;
+}
+
+.article-main {
+  flex: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 32px 32px 32px 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  overflow: hidden;
+}
+/* Layout */
+.article-page {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.article-main {
+  flex: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 32px 32px 32px 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.article-main h1 {
+  font-size: 2.2rem;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+.article-main markdown,
+.article-main p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.article-main pre,
+.article-main code {
+  background: #232323;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 18px;
+  overflow-x: auto;
+}
+
+/* Profile Sidebar */
+.profile-sidebar {
+  flex: 1;
+  min-width: 260px;
+  max-width: 320px;
+  position: sticky;
+  top: 32px;
+  height: fit-content;
+}
+
+.profile-card {
+  background: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 24px 18px;
+  text-align: center;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.profile-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.profile-role {
+  font-size: 1rem;
+  color: #1565c0;
+  margin-bottom: 16px;
+}
+
+.profile-social {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+.profile-social a {
+  color: #232323;
+  text-decoration: none;
+  font-size: 1.08rem;
+  transition: color 0.2s;
+}
+.profile-social a:hover {
+  color: #1565c0;
+}

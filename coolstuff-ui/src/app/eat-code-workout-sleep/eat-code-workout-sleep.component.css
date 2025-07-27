@@ -1,0 +1,40 @@
+.cycle-flow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.text {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.arrow {
+  font-size: 2rem;
+  color: #ccc;
+  animation: highlight-arrow 5s linear infinite;
+}
+
+.arrow-1 { animation-delay: 0s; }
+.arrow-2 { animation-delay: 1s; }
+.arrow-3 { animation-delay: 2s; }
+.arrow-4 { animation-delay: 3s; }
+.arrow-5 { animation-delay: 4s; }
+
+
+@keyframes highlight-arrow {
+  0%, 100% { color: #ccc; }
+  50% { color: #000; }
+}

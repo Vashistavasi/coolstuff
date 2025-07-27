@@ -1,0 +1,31 @@
+.quote-section {
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.quote-section h4 {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.quote-section .quote {
+  font-style: italic;
+  color: #fcfafa;
+  margin: 0;
+}
+
+body.dark-mode .quote-section .quote {
+  color: #fff;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+body.dark-mode .quote-section .quote-attribution {
+  color: #fff;
+}
+
+body.dark-mode .quote-section h4 {
+  color: #ffb300;
+}

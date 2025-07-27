@@ -1,26 +1,36 @@
 package com.vashista.coolstuff.model;
 
 public class Article {
-    private Long id;
+    private String slug;
     private String title;
-    private String link;
     private String content;
+    private String imageUrl;
+    private String description;
+    private String author;
+    private String readTime;
 
-    public Article() {}
+    public Article() {
+    }
 
-    public Article(Long id, String title, String link, String content) {
-        this.id = id;
+    public Article(String slug, String title, String content, String imageUrl, String description, String author,
+            String readTime) {
+        this.slug = slug;
         this.title = title;
-        this.link = link;
         this.content = content;
+        this.imageUrl = imageUrl;
+        this.description = description;
+        this.author = author;
+        this.readTime = readTime;
     }
 
-    public Long getId() {
-        return id;
+    // Getters and Setters
+
+    public String getSlug() {
+        return slug;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 
     public String getTitle() {
@@ -31,19 +41,43 @@ public class Article {
         this.title = title;
     }
 
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
     public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getReadTime() {
+        return readTime;
+    }
+
+    public void setReadTime(String readTime) {
+        this.readTime = readTime;
     }
 }

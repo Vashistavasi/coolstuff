@@ -1,7 +1,28 @@
-<h2>Articles</h2>
-<ul>
-  <li *ngFor="let article of articles" class="article-item">
-    <h3><a [href]="article.link" target="_blank">{{ article.title }}</a></h3>
-    <p>{{ article.content }}</p>
-  </li>
-</ul>
+<div class="hero-banner">
+  <app-eat-code-workout-sleep></app-eat-code-workout-sleep>
+</div>
+
+<div class="content-container">
+  <div class="latest-articles">
+    <h2>Latest Articles</h2>
+    <app-article-list></app-article-list>
+  </div>
+
+  <div class="game-of-life-container">
+    <h3>John Conway's Game of Life</h3>
+    <app-game-of-life></app-game-of-life>
+    <p class="game-of-life-description">
+      The Game of Life is a cellular automaton devised by the British mathematician John Horton Conway in 1970. It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input.
+    </p>
+  </div>
+</div>
+
+<div class="categories">
+  <h2>Categories</h2>
+  <div class="category-links">
+    <span>🧠 Backend</span>
+    <span>🎨 Frontend</span>
+    <span>☁️ Cloud</span>
+    <span>🛠️ DevOps</span>
+  </div>
+</div>

@@ -1,7 +1,27 @@
-<nav>
-  <a routerLink="/" routerLinkActive="active" class="nav-link">Home</a>
-  <a routerLink="/about" routerLinkActive="active" class="nav-link">About</a>
-</nav>
+<mat-toolbar color="primary" class="rounded-toolbar">
+  <a routerLink="/" class="nav-link">
+    <img src="assets/images/applogo.png" alt="CoolStuff Logo" class="logo">
+  </a>
+  <span class="spacer"></span>
+  <span class="vibe-coding">🚀 Vibe Coding 🔥</span>
+  <span class="spacer"></span>
+  <a routerLink="/" routerLinkActive="active" class="nav-link">🏠 Home</a>
+  <a routerLink="/about" routerLinkActive="active" class="nav-link">👤 About</a>
+  <app-dark-mode-toggle></app-dark-mode-toggle>
+</mat-toolbar>
+
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+
+<footer class="footer rounded-footer">
+  <div class="footer-content">
+    <app-quote-of-the-day></app-quote-of-the-day>
+    <p>© 2025 👨‍💻 Vashista Basava • Built with ❤️ & ☕</p>
+    <div class="social-links">
+      <a href="https://github.com/Vashistavasi" target="_blank">🐙 GitHub </a>
+      <a href="https://www.linkedin.com/in/vashista-basava-5b1349228/" target="_blank">💼 LinkedIn</a>
+      <a href="https://codeforces.com/profile/aplaypeak" target="_blank">💻 Codeforces</a>
+    </div>
+  </div>
+</footer>

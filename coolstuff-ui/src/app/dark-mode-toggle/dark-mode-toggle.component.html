@@ -1,0 +1,6 @@
+<!-- Removed theme description -->
+<div class="toggle-container" (click)="toggleTheme()">
+  <span *ngIf="!isDarkMode">🌙</span>
+  <span *ngIf="isDarkMode">☀️</span>
+  <span>{{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}</span>
+</div>

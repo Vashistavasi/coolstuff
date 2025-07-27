@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from "@angular/core";
+import { AboutService } from "./about.service";
+import { MarkdownModule } from "ngx-markdown";
+import { CommonModule } from "@angular/common";
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  selector: "app-about",
+  templateUrl: "./about.component.html",
+  styleUrls: ["./about.component.css"],
+  standalone: true,
+  imports: [CommonModule, MarkdownModule],
 })
 export class AboutComponent implements OnInit {
-  about: any = {};
+  aboutContent: string | undefined;
 
-  constructor(private http: HttpClient) {}
+  constructor(private aboutService: AboutService) {}
 
   ngOnInit(): void {
-    this.http.get<any>("/api/about").subscribe((data) => {
-      this.about = data;
+    this.aboutService.getAbout().subscribe((data) => {
+      this.aboutContent = data.description;
     });
   }
 }

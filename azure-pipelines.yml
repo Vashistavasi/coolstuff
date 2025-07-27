@@ -1,0 +1,75 @@
+trigger:
+  - master
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  ANGULAR_DIR: "coolstuff-ui"
+  BACKEND_DIR: "coolstuff-api"
+  DIST_TARGET: "/home/azureuser/coolstuff-ui/dist/coolstuff-ui"
+  JAR_TARGET: "/home/azureuser/coolstuff-backend-0.0.1-SNAPSHOT.jar"
+  SERVER_IP: "52.150.51.68"
+  SSH_USER: "azureuser"
+  SSH_KEY_PATH: "$(Pipeline.Workspace)/coolstuff-vm-key.pem"
+
+steps:
+  - checkout: self
+
+  - task: AzureKeyVault@2
+    inputs:
+      azureSubscription: "MySubscription"
+      KeyVaultName: "coolstuff-kv"
+      SecretsFilter: "coolstuff-vm-key"
+    displayName: "Download SSH Key from Key Vault"
+
+  - script: |
+      echo "$(coolstuff-vm-key)" > $(SSH_KEY_PATH)
+      chmod 600 $(SSH_KEY_PATH)
+    displayName: "Save SSH Key to File"
+
+  - script: |
+      cd $(ANGULAR_DIR)
+      npm install
+      npm run build --prod
+    displayName: "Build Angular App"
+
+  - script: |
+      cd $(BACKEND_DIR)
+      mvn clean package
+    displayName: "Build Spring Boot Jar"
+
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: "$(ANGULAR_DIR)/dist/coolstuff-ui"
+      Contents: "**"
+      TargetFolder: "$(Build.ArtifactStagingDirectory)/dist"
+    displayName: "Prepare Angular dist for publish"
+
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: "$(BACKEND_DIR)/target"
+      Contents: "coolstuff-backend-0.0.1-SNAPSHOT.jar"
+      TargetFolder: "$(Build.ArtifactStagingDirectory)/backend"
+    displayName: "Prepare Jar for publish"
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: "$(Build.ArtifactStagingDirectory)"
+      artifactName: "drop"
+      publishLocation: "Container"
+
+  - task: DownloadBuildArtifacts@0
+    inputs:
+      buildType: "current"
+      downloadType: "single"
+      artifactName: "drop"
+      downloadPath: "$(Pipeline.Workspace)"
+
+  - script: |
+      ssh -i $(SSH_KEY_PATH) $(SSH_USER)@$(SERVER_IP) "pkill -f coolstuff-backend-0.0.1-SNAPSHOT.jar || true"
+      ssh -i $(SSH_KEY_PATH) $(SSH_USER)@$(SERVER_IP) "rm -rf $(DIST_TARGET) && mkdir -p $(DIST_TARGET)"
+      scp -i $(SSH_KEY_PATH) -r $(Pipeline.Workspace)/drop/dist/* $(SSH_USER)@$(SERVER_IP):$(DIST_TARGET)
+      scp -i $(SSH_KEY_PATH) $(Pipeline.Workspace)/drop/backend/coolstuff-backend-0.0.1-SNAPSHOT.jar $(SSH_USER)@$(SERVER_IP):$(JAR_TARGET)
+      ssh -i $(SSH_KEY_PATH) $(SSH_USER)@$(SERVER_IP) "nohup java -jar $(JAR_TARGET) --server.port=8080 > /home/azureuser/app.log 2>&1 &"
+    displayName: "Stop old JAR and deploy new backend"

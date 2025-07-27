@@ -1,10 +1,42 @@
-.article-item {
-  background-color: white;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 2rem 2rem 2rem;
+  gap: 2rem;
 }
-.article-item h3 {
-  margin-top: 0;
+
+.latest-articles {
+  flex: 3;
+}
+
+.game-of-life-container {
+  flex: 1;
+  text-align: center;
+}
+
+.game-of-life-container h3 {
+  font-weight: bold;
+}
+
+.game-of-life-description {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 1rem;
+}
+
+.hero-banner {
+  background-color: #e9dfc7;
+  padding: 4rem 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.categories {
+  padding: 2rem 0 2rem 0;
+  text-align: center;
+}
+
+.category-links span {
+  margin: 0 15px;
+  font-size: 1.2rem;
 }

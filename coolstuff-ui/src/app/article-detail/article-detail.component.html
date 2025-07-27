@@ -1,0 +1,21 @@
+
+<div class="article-page">
+  <div class="article-main">
+    <div *ngIf="article">
+      <h1>{{ article.title }}</h1>
+      <markdown [data]="article.content"></markdown>
+    </div>
+  </div>
+  <aside class="profile-sidebar">
+    <div class="profile-card">
+      <img src="assets/images/me.png" alt="Vashista Basava" class="profile-pic">
+      <h3>Vashista Basava</h3>
+      <p class="profile-role">Full Stack Developer & DevOps Enthusiast</p>
+      <div class="profile-social">
+        <a href="https://github.com/Vashistavasi" target="_blank">🐙 GitHub</a>
+        <a href="https://www.linkedin.com/in/vashista-basava-5b1349228/" target="_blank">💼 LinkedIn</a>
+        <a href="https://codeforces.com/profile/aplaypeak" target="_blank">💻 Codeforces</a>
+      </div>
+    </div>
+  </aside>
+</div>
